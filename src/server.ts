@@ -15,9 +15,15 @@ const app = express(); // Iniciando instância do microframework Express
     PATCH => Alteração específica
 */
 
-// http://localhost:3333/users
-app.get("/users", (request, response) => {
-    return response.send("Hello World - NLW04");
+// http://localhost:3333/
+app.get("/", (request, response) => {
+    return response.json({message: "Hello World - NLW04"});
+})
+
+// 1º parâmetro => Rota
+// 2º parâmetro => request e response
+app.post("/", (request, response) => {
+    return response.json({message: "Os dados foram salvos com sucessso!"});
 })
 
 // Criando o servidor na porta 3333, para iniciar: yarn dev
