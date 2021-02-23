@@ -14,31 +14,22 @@ import 'reflect-metadata' // Deve vir primeiro
 import express from 'express';
 /*
     Banco de dados dev: yarn add sqlite3
+     // Por padrão, não precisa escrever o index
 */
-import './database' // Por padrão, não precisa escrever o index
+import './database'
+/*
+    Importando rotas criadas por onde são feitas cada requisição
+*/
+import { router } from './routes';
 
 const app = express(); // Iniciando instância do microframework Express
 
-/*
-    5 métodos de requisição HTTP mais utilizados:
-    GET => Busca
-    POST => salvar
-    PUT => Alterar
-    DELETE => Deletar
-    PATCH => Alteração específica
+app.use(express.json()) // Habilitar o uso de formato JSON
+
+app.use(router) // Funciona como Middleware para utilizar as rotas criadas
+
+/* 
+    Criando o servidor na porta 3333, para iniciar: yarn dev
+    Yarn dev configurado no package.json pelo Ts-node-dev
 */
-
-// http://localhost:3333/
-app.get("/", (request, response) => {
-    return response.json({message: "Hello World - NLW04"});
-})
-
-// 1º parâmetro => Rota
-// 2º parâmetro => request e response
-app.post("/", (request, response) => {
-    return response.json({message: "Os dados foram salvos com sucessso!"});
-})
-
-// Criando o servidor na porta 3333, para iniciar: yarn dev
-// Yarn dev configurado no package.json pelo Ts-node-dev
 app.listen(3333, () => console.log("Server is running!"));

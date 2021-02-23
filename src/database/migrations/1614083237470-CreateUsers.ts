@@ -27,7 +27,7 @@ export class CreateUsers1614083237470 implements MigrationInterface {
                             isPrimary: true // ID é a chave primária
                         },
                         {
-                            name: "nome",
+                            name: "name",
                             type: "varchar",
                             isNullable: false // Não pode ser nulo (Padrão se deixar sem)
                         },
