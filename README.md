@@ -1,3 +1,7 @@
+[![GitHub forks](https://img.shields.io/github/forks/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/network/members/)
+
+[![GitHub stars](https://img.shields.io/github/stars/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/stargazers/)
+
 <h3 align="center">
     <img width="300px" src="https://i.imgur.com/JkVMEgs.png">
     <br><br>
@@ -7,8 +11,8 @@
       <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-license">Licença</a>
   </p>
-
 </h3>
+
 <p align="center">
   <a href="https://rocketseat.com.br">
     <img src="https://i.imgur.com/1o7urkT.png">
@@ -28,6 +32,34 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
 - [YARN](https://yarnpkg.com/)
+- [NodePostgres](https://node-postgres.com/)
+
+## ⤵ Comandos para começar
+
+Essas instruções vão te levar a uma cópia do projeto rodando em sua máquina local para propósitos de testes e desenvolvimento.
+
+```bash
+- git clone https://github.com/Lucas-Angelo/nps-api.git
+- cd nps-api
+```
+
+Instalando dependências
+
+```bash
+- npm install
+```
+
+ou
+
+```bash
+- yarn install
+```
+
+Inicializando uma instância local (Script configurado no package.json)
+
+```bash
+- yarn dev
+```
 
 ## 🔗 Links do projeto
 
