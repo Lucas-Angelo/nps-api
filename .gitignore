@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Não enviar o banco de dados
+./src/database/database.sqlite
