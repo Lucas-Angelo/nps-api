@@ -15,6 +15,21 @@ class UserController {
        */
        const usersRepository = getRepository(User);
 
+        /* 
+            Verificar se já existe algum com esse email
+            No SQL puro seria algo como: SELECT * FROM USERS WHERE EMAIL = "EMAIL";
+        */
+       const userAlreadyExists = await usersRepository.findOne({
+           email
+       });
+
+       // Se já existir algum usuário com esse email, retorna erro 400
+       if(usersRepository) {
+            return response.status(400).json({
+                error: "User already exists!"
+            });
+       }
+
        // Necessário criar o usuário utilizando o repositório primeiramente
        const user = usersRepository.create({
             name, email
