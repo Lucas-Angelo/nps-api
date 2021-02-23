@@ -1,5 +1,4 @@
 [![GitHub forks](https://img.shields.io/github/forks/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/network/members/)
-
 [![GitHub stars](https://img.shields.io/github/stars/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/stargazers/)
 
 <h3 align="center">
