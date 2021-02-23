@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
 - [YARN](https://yarnpkg.com/)
-- [NodePostgres](https://node-postgres.com/)
+- [TypeORM](https://typeorm.io/)
 
 ## ⤵ Comandos para começar
 
@@ -42,7 +42,7 @@ Essas instruções vão te levar a uma cópia do projeto rodando em sua máquina
 - cd nps-api
 ```
 
-Instalando dependências
+Instalando dependências (Recomendável utilizar NPM para compatibilidade com reflect-metadata)
 
 ```bash
 - npm install
