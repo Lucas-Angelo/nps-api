@@ -24,7 +24,7 @@ class UserController {
        });
 
        // Se já existir algum usuário com esse email, retorna erro 400
-       if(usersRepository) {
+       if(userAlreadyExists) {
             return response.status(400).json({
                 error: "User already exists!"
             });
