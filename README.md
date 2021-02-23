@@ -1,6 +1,3 @@
-[![GitHub forks](https://img.shields.io/github/forks/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/network/members/)
-[![GitHub stars](https://img.shields.io/github/stars/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/stargazers/)
-
 <h3 align="center">
     <img width="300px" src="https://i.imgur.com/JkVMEgs.png">
     <br><br>
@@ -19,6 +16,9 @@
 </p>
 
 ## 🔖 Sobre
+
+[![GitHub forks](https://img.shields.io/github/forks/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/network/members/)
+[![GitHub stars](https://img.shields.io/github/stars/Lucas-Angelo/nps-api?style=social)](https://github.com/Lucas-Angelo/nps-api/stargazers/)
 
 O <strong>NPS-API</strong> é uma API Restful para Net Promoter Score.
 
