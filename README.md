@@ -36,6 +36,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## ⤵ Comandos para começar
 
 Essas instruções vão te levar a uma cópia do projeto rodando em sua máquina local para propósitos de testes e desenvolvimento.
+Obs: Banco de dados é o Sqlite3, caso queira alterar, configure o arquivo ormconfig.json para seu banco de dados específico (Campo "database" é o nome do banco de dados no SGBD, neste projeto é local).
 
 ```bash
 - git clone https://github.com/Lucas-Angelo/nps-api.git
