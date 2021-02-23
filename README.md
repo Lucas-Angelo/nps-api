@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Lucas-Angelo/nps-api.svg?branch=main)](https://travis-ci.com/Lucas-Angelo/nps-api)
+
 <h3 align="center">
     <img width="300px" src="https://i.imgur.com/JkVMEgs.png">
     <br><br>
