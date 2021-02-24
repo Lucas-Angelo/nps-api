@@ -58,6 +58,12 @@ ou
 - yarn install
 ```
 
+Criando tabela das migrations do Sqlite3 por meio do cli do TypeOrm
+
+```bash
+- yarn typeorm migration:run
+```
+
 Inicializando uma instância local (Script configurado no package.json)
 
 ```bash
