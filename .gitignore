@@ -104,4 +104,6 @@ dist
 .tern-port
 
 # Não enviar o banco de dados
+*.sqlite
+database.sqlite
 ./src/database/database.sqlite
