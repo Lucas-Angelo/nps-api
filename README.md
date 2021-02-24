@@ -58,6 +58,12 @@ ou
 - yarn install
 ```
 
+Gerar o arquivo de database.sqlite do Sqlite3, onde ficaram armazenados as tabelas da API
+
+```bash
+- yarn devDB
+```
+
 Criando tabela das migrations do Sqlite3 por meio do cli do TypeOrm
 
 ```bash
