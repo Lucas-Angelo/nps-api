@@ -22,6 +22,9 @@ const surveysController = new SurveyController();
 router.post("/users", userController.create);
 
 // Para o create de surveys do controller
-router.post("/surveys", surveysController.create)
+router.post("/surveys", surveysController.create);
+
+// Para ver todas as pesquisas (surveys)
+router.get("/surveys", surveysController.show);
 
 export { router }; // Retornando as rotas preenchidas para o server.ts

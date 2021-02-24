@@ -25,6 +25,15 @@ class SurveyController{
 
     }
 
+    // Controller para criar a rota que retorna todas as pesquisas (surveys)
+    async show(request: Request, response: Response){
+        const surveysRepository = getCustomRepository(SurveysRepository);
+
+        const all = await surveysRepository.find(); // .find() é o método para listar todos os registros da tabela
+
+        return response.json(all);
+    }
+
 }
 
 export { SurveyController };
