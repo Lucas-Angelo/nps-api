@@ -8,7 +8,7 @@ export default {
   // automock: false,
 
   // Stop running tests after `n` failures
-  // bail: 0,
+  bail: true, // Se algum teste falhar, nao ira dar continuidade para os proximos testes
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\lcs20\\AppData\\Local\\Temp\\jest",
@@ -137,7 +137,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  // testEnvironment: "node",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -146,10 +146,11 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
+  // Caminho onde será colocado os testes (pastas dos testes ou procurar pelos arquivos)
+  // Dentro da pasta teste, é pra pegar pra teste todos os arquivos terminados em test.ts
+   testMatch: [
+     "**/__tests__/*test.ts"
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
