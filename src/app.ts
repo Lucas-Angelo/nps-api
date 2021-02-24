@@ -16,15 +16,16 @@ import express from 'express';
     Banco de dados dev: yarn add sqlite3
      // Por padrão, não precisa escrever o index
 */
-import './database'
+import createConnection from './database'
 /*
     Importando rotas criadas por onde são feitas cada requisição
 */
 import { router } from './routes';
 
+createConnection(); // Para iniciar a conexão com o banco de dados, verificando se é test ou produção
 const app = express(); // Iniciando instância do microframework Express
 
-app.use(express.json()) // Habilitar o uso de formato JSON
-app.use(router) // Funciona como Middleware para utilizar as rotas criadas
+app.use(express.json()); // Habilitar o uso de formato JSON
+app.use(router); // Funciona como Middleware para utilizar as rotas criadas
 
 export { app };

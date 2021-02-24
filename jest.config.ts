@@ -149,7 +149,7 @@ export default {
   // Caminho onde será colocado os testes (pastas dos testes ou procurar pelos arquivos)
   // Dentro da pasta teste, é pra pegar pra teste todos os arquivos terminados em test.ts
    testMatch: [
-     "**/__tests__/*test.ts"
+     "**/__tests__/*.test.ts"
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

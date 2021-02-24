@@ -4,7 +4,7 @@ node_js:
 install:
   - npm install
   - yarn install
-  - yarn typeorm migrations:create -n CreateUsers
+  - yarn devDB
   - yarn typeorm migration:run
 script:
   - yarn test
