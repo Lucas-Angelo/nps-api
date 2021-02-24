@@ -1,6 +1,6 @@
-import {Request, Response} from 'express'; // Express para as requisições e respostas
-import { getRepository } from 'typeorm';
-import { User } from '../models/User'; // Importando o tipo User para controladores de usuários
+import { Request, Response } from 'express'; // Express para as requisições e respostas
+import { getCustomRepository } from 'typeorm';
+import { UsersRepository } from '../repositories/UsersRepository'; // Aqui onde está os comandos de acesso o banco de dados por meio do TypeORM de User
 
 class UserController {
 
@@ -13,7 +13,7 @@ class UserController {
         Comunicação com banco de dados é por meio do repositório
         Para cada entidade (nesse caso o usuário) terá o respositório responsável
        */
-       const usersRepository = getRepository(User);
+       const usersRepository = getCustomRepository(UsersRepository);
 
         /* 
             Verificar se já existe algum com esse email
@@ -43,4 +43,4 @@ class UserController {
 
 }
 
-export { UserController }
+export { UserController };
