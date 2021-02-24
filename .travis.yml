@@ -7,4 +7,4 @@ install:
   - yarn typeorm migrations:create -n CreateUsers
   - yarn typeorm migration:run
 script:
-  - echo "Success!"
+  - yarn test
