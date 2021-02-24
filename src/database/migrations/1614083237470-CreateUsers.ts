@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 /* 
     Arquivo gerado pelo script: yarn typeorm migrations:create -n CreateUsers
-    Script configurado no package.json
+    Script configurado no package.json (CLI, command line interface)
     Diretório de migrations configurado no ormconfig.json ("migrationsDir")
 */
 
