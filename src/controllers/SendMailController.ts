@@ -45,19 +45,15 @@ class SendMailController {
                 error: "Survey does not exists",
             });
         }
-        
-        // Se passou disso tudo, agora sim. 
-        // Primeiro: salvar as informações na tabela surveyUser
-        const surveyUser = surveysUsersRepository.create({
-            user_id: user.id,
-            survey_id: survey.id
-        });
-        // Esperando salvar o registro na tabela do banco de dados
-        await surveysUsersRepository.save(surveyUser);
 
-        // Segundo: enviar o email
-        // __dirname captura o diretório exato de onde está essa aplicação, vai estar agora na pasta services
-        const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
+        // Verificar se o usuário já respondeu essa pesquisa
+        // Não deixando criar vários registrados de resposta para o mesmo usuário e pesquisa
+        const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
+            where: [{
+                user_id: user.id,
+                value: null
+            }]
+        });
 
         // Variável para passar pro handlebars colocar no texto
         const variable = {
@@ -68,9 +64,28 @@ class SendMailController {
             link: process.env.URL_MAIL
         };
 
+        // Enviar o email
+        // __dirname captura o diretório exato de onde está essa aplicação, vai estar agora na pasta services
+        const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
+
+        if(surveyUserAlreadyExists) {
+            // Chamando o serviço de email pra enviar o email
+            await SendMailService.execute(email, survey.title, variable, npsPath);
+            return response.json(surveyUserAlreadyExists);
+        }
+        
+        // Se passou disso tudo, agora sim. 
+        // Salvar as informações na tabela surveyUser
+        const surveyUser = surveysUsersRepository.create({
+            user_id: user.id,
+            survey_id: survey.id
+        });
+        // Esperando salvar o registro na tabela do banco de dados
+        await surveysUsersRepository.save(surveyUser);
+
+        // Chamando o serviço de email pra enviar o email
         await SendMailService.execute(email, survey.title, variable, npsPath);
 
-        return response.json(surveyUser);
     }
     
 }
