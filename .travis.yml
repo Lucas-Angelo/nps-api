@@ -7,4 +7,4 @@ install:
   - yarn devDB
   - yarn typeorm migration:run
 script:
-  - yarn test
+  - yarn test -i
