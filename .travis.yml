@@ -7,4 +7,7 @@ install:
   - yarn devDB
   - yarn typeorm migration:run
 script:
-  - yarn test -i
+  - yarn test
+env:
+  global:
+  - URL_MAIL=http://localhost:3333/answers
