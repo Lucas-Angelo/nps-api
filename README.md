@@ -6,6 +6,7 @@
     <p align="center">
       <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-comandos-para-começar">Comandos para começar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <a href="#-testes">Testes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-links-do-projeto">Links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-license">Licença</a>
@@ -75,6 +76,14 @@ Inicializando uma instância local (Script configurado no package.json)
 
 ```bash
 - yarn dev
+```
+
+## ⤵ Testes
+
+Para testar se instalou a aplicação corretamente e se passa em todos os testes de integração, utilize o comando:
+
+```bash
+- yarn test
 ```
 
 ## 🔗 Links do projeto
