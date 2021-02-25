@@ -8,6 +8,13 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateSurveys1614168227609 implements MigrationInterface {
 
+    /*
+        Para rodar as migrations: yarn typeorm migration:run
+        Caso queira ver o banco de dados sqlite, pode baixar a extensão do VsCode SQLite (Cntrl + Shift + P) e buscar Open Database
+        Ou abrir pelo programa Beekeeper Studio
+        Para roolback, reverter algum comando: yarn typeorm migration:revert
+    */
+
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table(
