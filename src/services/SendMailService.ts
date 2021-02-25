@@ -1,4 +1,7 @@
-import nodemailer, { Transporter } from 'nodemailer';
+import nodemailer, { Transporter } from 'nodemailer'; // Para criar email e enviar
+import { resolve } from 'path'; // Para ir e voltar nos diretorios do nodejs
+import handlebars from 'handlebars';
+import fs from 'fs'; // file system nativo do nodejs
 
 class SendMailService {
 
@@ -32,12 +35,28 @@ class SendMailService {
         body: corpo do email
     */
     async execute (to: string, subject: string, body: string) {
+        // __dirname captura o diretório exato de onde está essa aplicação, vai estar agora na pasta services
+        const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
+
+        // Utilizar o file system para ler o arquivo
+        const templateFileContent = fs.readFileSync(npsPath).toString("utf8");
+
+        // Para poder passar pra handlebars
+        // O parse pois ainda tem que fazer o parse das variáveis do hbs
+        const mailTemplateParse = handlebars.compile(templateFileContent);
+
+        // Para gerar o html passando as variáveis para o hbs
+        const html = mailTemplateParse({
+            name: to,
+            title: subject,
+            description: body
+        });
 
         // Usuário de email fake criado para enviar email
         const message = await this.client.sendMail({
             to,
             subject,
-            html: body,
+            html,
             from: "NPS <noreplay@nps.com.br>"
         })
 
