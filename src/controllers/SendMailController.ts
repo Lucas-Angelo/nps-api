@@ -49,10 +49,14 @@ class SendMailController {
         // Verificar se o usuário já respondeu essa pesquisa
         // Não deixando criar vários registrados de resposta para o mesmo usuário e pesquisa
         const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
-            where: [{
+            where: [
+                {
                 user_id: user.id,
                 value: null
-            }]
+            }],
+            // Para poder ver os dados do usuário e da pesquisa além do cadastro da pesquisa
+            // Por meio dos ManyToOne e JoinColumn da classe SurveyUser
+            relations: ["user", "survey"]
         });
 
         // Variável para passar pro handlebars colocar no texto
@@ -82,9 +86,6 @@ class SendMailController {
         });
         // Esperando salvar o registro na tabela do banco de dados
         await surveysUsersRepository.save(surveyUser);
-
-        // Chamando o serviço de email pra enviar o email
-        await SendMailService.execute(email, survey.title, variable, npsPath);
 
     }
     
