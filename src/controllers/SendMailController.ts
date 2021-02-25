@@ -3,6 +3,7 @@
     mais o objetivo principal dele é enviar 
     o email e depois salvar a resposta.
 */
+import { resolve } from 'path'; // Para ir e voltar nos diretorios do nodejs
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
 import { SurveysRepository } from "../repositories/SurveysRepository";
@@ -26,10 +27,10 @@ class SendMailController {
         const surveysUsersRepository = getCustomRepository(SurveysUsersRepository);
 
         // Verificar se o usuário existe
-        const userAlreadyExists = await usersRepository.findOne({email});
+        const user = await usersRepository.findOne({email});
 
         // Se o usuário não existir, dar erro
-        if(!userAlreadyExists) {
+        if(!user) {
             return response.status(400).json({
                 error: "User does not exists",
             });
@@ -48,14 +49,24 @@ class SendMailController {
         // Se passou disso tudo, agora sim. 
         // Primeiro: salvar as informações na tabela surveyUser
         const surveyUser = surveysUsersRepository.create({
-            user_id: userAlreadyExists.id,
+            user_id: user.id,
             survey_id: survey.id
-        })
+        });
         // Esperando salvar o registro na tabela do banco de dados
         await surveysUsersRepository.save(surveyUser);
 
         // Segundo: enviar o email
-        await SendMailService.execute(email, survey.title, survey.description);
+        // __dirname captura o diretório exato de onde está essa aplicação, vai estar agora na pasta services
+        const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
+
+        // Variável para passar pro handlebars colocar no texto
+        const variable = {
+            name: user.name,
+            title: survey.title,
+            description: survey.description
+        };
+
+        await SendMailService.execute(email, survey.title, variable, npsPath);
 
         return response.json(surveyUser);
     }
