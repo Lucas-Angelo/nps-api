@@ -7,8 +7,7 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "devDB": "ts-node-dev --transpile-only --ignore-watch node_modules src/database/index.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "test": "set NODE_ENV=test&&jest -i",
-    "posttest": "rm -rf ./src/database/database.test.sqlite"
+    "test": "set NODE_ENV=test&&jest -i"
   },
   "dependencies": {
     "express": "^4.17.1",
