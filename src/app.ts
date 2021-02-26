@@ -14,7 +14,7 @@ import 'reflect-metadata' // Deve vir primeiro
 import express from 'express';
 /*
     Banco de dados dev: yarn add sqlite3
-     // Por padrão, não precisa escrever o index
+    Por padrão, não precisa escrever o index
 */
 import createConnection from './database'
 /*
