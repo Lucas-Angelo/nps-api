@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { UserController } from './controllers/UserController';
 import { SurveyController } from './controllers/SurveyController';
 import { SendMailController } from './controllers/SendMailController';
+import { AnswerController } from './controllers/AnswerController';
 
 // Arquivo das rotas de requisições HTTP separadas por arquitetura do server.ts
 
@@ -10,6 +11,7 @@ const router = Router();
 const userController = new UserController();
 const surveysController = new SurveyController();
 const sendMailController = new SendMailController();
+const answerController = new AnswerController();
 
 /*
     5 métodos de requisição HTTP mais utilizados:
@@ -30,5 +32,8 @@ router.get("/surveys", surveysController.show);
 
 // Rota cadastro da pesquisa de um usuario
 router.post("/sendMail", sendMailController.execute);
+
+// Rota para resposta de pesquisa de satisfação
+router.get("/answers/:value", answerController.execute);
 
 export { router }; // Retornando as rotas preenchidas para o server.ts
