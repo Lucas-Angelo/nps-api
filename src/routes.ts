@@ -3,6 +3,7 @@ import { UserController } from './controllers/UserController';
 import { SurveyController } from './controllers/SurveyController';
 import { SendMailController } from './controllers/SendMailController';
 import { AnswerController } from './controllers/AnswerController';
+import { NpsController } from './controllers/NpsController';
 
 // Arquivo das rotas de requisições HTTP separadas por arquitetura do server.ts
 
@@ -12,6 +13,7 @@ const userController = new UserController();
 const surveysController = new SurveyController();
 const sendMailController = new SendMailController();
 const answerController = new AnswerController();
+const npsController = new NpsController();
 
 /*
     5 métodos de requisição HTTP mais utilizados:
@@ -35,5 +37,8 @@ router.post("/sendMail", sendMailController.execute);
 
 // Rota para resposta de pesquisa de satisfação
 router.get("/answers/:value", answerController.execute);
+
+// Rota para mostrar o NPS de uma pesquisa
+router.get("/nps/:survey_id", npsController.execute);
 
 export { router }; // Retornando as rotas preenchidas para o server.ts
