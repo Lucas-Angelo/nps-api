@@ -10,6 +10,7 @@ import { SurveysRepository } from "../repositories/SurveysRepository";
 import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
 import { UsersRepository } from "../repositories/UsersRepository";
 import SendMailService from "../services/SendMailService";
+import { AppError } from '../errors/AppError';
 
 class SendMailController {
 
@@ -31,9 +32,7 @@ class SendMailController {
 
         // Se o usuário não existir, dar erro
         if(!user) {
-            return response.status(400).json({
-                error: "User does not exists",
-            });
+            throw new AppError("User does not exists!");
         }
 
         // Capturar no findOne() o id do survey_id
@@ -41,9 +40,7 @@ class SendMailController {
     
         // Se a pesquisa não existir, dar erro
         if(!survey) {
-            return response.status(400).json({
-                error: "Survey does not exists",
-            });
+            throw new AppError("Survey does not exists!");
         }
 
         // Verificar se o usuário já respondeu essa pesquisa

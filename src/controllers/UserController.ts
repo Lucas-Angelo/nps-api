@@ -2,6 +2,7 @@ import { Request, Response } from 'express'; // Express para as requisições e 
 import { getCustomRepository, UpdateDateColumn } from 'typeorm';
 import { UsersRepository } from '../repositories/UsersRepository'; // Aqui onde está os comandos de acesso o banco de dados por meio do TypeORM de User
 import * as yup from 'yup';
+import { AppError } from '../errors/AppError';
 class UserController {
 
     async create(request: Request, response: Response) {
@@ -27,9 +28,7 @@ class UserController {
         try {
             await scheme.validate(request.body, {abortEarly: false}); // AbortEarly para fazer todas as validações
         } catch (err) {
-            return response.status(400).json (
-                {error: err}
-            );
+            throw new AppError(err);
         }
        
        /*
@@ -49,9 +48,7 @@ class UserController {
 
        // Se já existir algum usuário com esse email, retorna erro 400
        if(userAlreadyExists) {
-            return response.status(400).json({
-                error: "User already exists!"
-            });
+        throw new AppError("User already exists!");
        }
 
        // Necessário criar o usuário utilizando o repositório primeiramente

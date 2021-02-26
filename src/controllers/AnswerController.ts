@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
 import { getCustomRepository } from 'typeorm';
+import { AppError } from '../errors/AppError';
 import { SurveysUsersRepository } from '../repositories/SurveysUsersRepository';
 
 class AnswerController {
-
 
     /*
         Estrutura de um link:
@@ -30,9 +30,7 @@ class AnswerController {
         });
         // Se não existir esse surveyUser, retorna 400 e mensagem de erro
         if(!surveyUser) {
-            return response.status(400).json({
-                error: "Survey User does not exists!"
-            })
+            throw new AppError("Survey User does not exists!");
         }
 
         // Caso o surveyUser existir, sobrescreve o null que estava no banco de dados, pelo valor avaliado
