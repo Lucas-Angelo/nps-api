@@ -60,11 +60,11 @@ class SendMailController {
         });
 
         // Variável para passar pro handlebars colocar no texto
-        const variable = {
+        const variables = {
             name: user.name,
             title: survey.title,
             description: survey.description,
-            user_id: user.id,
+            id: "", // Vazio inicialmente, pois ainda tem que verificar se existe uma survey pra esse user
             link: process.env.URL_MAIL
         };
 
@@ -73,8 +73,10 @@ class SendMailController {
         const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
 
         if(surveyUserAlreadyExists) {
+            // Já que existe uma survey para esse user, atualizar o id das variáveis
+            variables.id = surveyUserAlreadyExists.id;
             // Chamando o serviço de email pra enviar o email
-            await SendMailService.execute(email, survey.title, variable, npsPath);
+            await SendMailService.execute(email, survey.title, variables, npsPath);
             return response.json(surveyUserAlreadyExists);
         }
         
@@ -87,6 +89,14 @@ class SendMailController {
         // Esperando salvar o registro na tabela do banco de dados
         await surveysUsersRepository.save(surveyUser);
 
+        // Se não existir a surveyUser id, vai colocar o id que acabou de criar
+        variables.id = surveyUser.id;
+
+        // Chamando o serviço de email pra enviar o email
+        await SendMailService.execute(email, survey.title, variables, npsPath);
+
+        // Retornando o registro de pesquisa cadastrada para um usuário
+        return response.json(surveyUser);
     }
     
 }
