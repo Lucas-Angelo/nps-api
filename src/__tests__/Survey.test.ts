@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { Connection, getConnection } from 'typeorm';
 import { app } from '../app';
 
 import createConnection from '../database';
@@ -10,6 +11,13 @@ describe("Surveys", () => {
     beforeAll(async () => {
         const connection = await createConnection();
         await connection.runMigrations();
+    });
+
+    // Para excluir o banco de dados fake
+    afterAll(async () => {
+        const connection = getConnection();
+        await connection.dropDatabase();
+        await connection.close();
     });
 
     it("Should be able to create a new survey", async () => {
