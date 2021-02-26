@@ -49,11 +49,11 @@ class SendMailController {
         // Verificar se o usuário já respondeu essa pesquisa
         // Não deixando criar vários registrados de resposta para o mesmo usuário e pesquisa
         const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
-            where: [
-                {
+            // Sem colchetes e como objeto único para ser uma condição de AND (&&)
+            where: {
                 user_id: user.id,
                 value: null
-            }],
+            },
             // Para poder ver os dados do usuário e da pesquisa além do cadastro da pesquisa
             // Por meio dos ManyToOne e JoinColumn da classe SurveyUser
             relations: ["user", "survey"]
