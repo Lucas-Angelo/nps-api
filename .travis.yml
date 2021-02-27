@@ -3,7 +3,6 @@ node_js:
   - 14
 install:
   - npm install
-  - npm install
   - npm typeorm migration:run
 script:
   - npm test
