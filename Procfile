@@ -1,1 +1,1 @@
-web:node start
+web:yarn start

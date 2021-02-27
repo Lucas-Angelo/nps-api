@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "devDB": "ts-node-dev --transpile-only --ignore-watch node_modules src/database/index.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
@@ -16,6 +17,7 @@
     "nodemailer": "^6.4.18",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
+    "ts-node": "^9.1.1",
     "typeorm": "^0.2.31",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
@@ -30,6 +32,6 @@
     "supertest": "^6.1.3",
     "ts-jest": "^26.5.2",
     "ts-node-dev": "^1.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.2"
   }
 }
