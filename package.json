@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "prestart": "yarn typeorm migration:run",
     "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "set NODE_ENV=test&&jest -i"
