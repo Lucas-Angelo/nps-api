@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "ts-node-dev node_modules/typeorm/cli.js",
-    "prestart": "ts-node-dev node_modules/typeorm/cli.js migration:run",
+    "heroku-postbuild": "ts-node-dev node_modules/typeorm/cli.js migration:run",
     "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "startTestDB": "ts-node-dev --transpile-only --ignore-watch node_modules src/database/index.ts",
