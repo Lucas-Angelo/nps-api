@@ -3,9 +3,9 @@ node_js:
   - 14
 install:
   - npm install
-  - npm typeorm migration:run
+  - yarn install
 script:
-  - npm test
+  - yarn test
 env:
   global:
   - URL_MAIL=http://localhost:3333/answers
