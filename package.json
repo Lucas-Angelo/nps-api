@@ -13,6 +13,7 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
+    "@types/node": "^14.14.31",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.7",
