@@ -4,6 +4,8 @@
     <img width="300px" src="https://i.imgur.com/JkVMEgs.png">
     <br><br>
     <p align="center">
+      <a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-comandos-para-começar">Comandos para começar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <a href="#-testes">Testes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -27,6 +29,10 @@
 O <strong>NPS-API</strong> é uma API Restful para Net Promoter Score.
 
 Aplicação web construída na trilha <strong>NodeJS</strong> da <strong>Next Level Week</strong> distribuída pela [Rocketseat](https://rocketseat.com.br/).
+
+## ⚙️ Demo
+
+GET exemplo disponível em: https://nps-api.herokuapp.com/surveys
 
 ## 🚀 Tecnologias
 
