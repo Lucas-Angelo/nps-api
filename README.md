@@ -54,7 +54,7 @@ Obs: Banco de dados é o Sqlite3, caso queira alterar, configure o arquivo ormco
 - cd nps-api
 ```
 
-Instalando dependências (Recomendável utilizar NPM para compatibilidade com reflect-metadata)
+Instalando dependências
 
 ```bash
 - npm install
@@ -69,7 +69,7 @@ ou
 Gerar o arquivo de database.sqlite do Sqlite3, onde ficaram armazenados as tabelas da API
 
 ```bash
-- yarn devDB
+- yarn startTestDB
 ```
 
 Criando tabela das migrations do Sqlite3 por meio do cli do TypeOrm
@@ -82,6 +82,13 @@ Inicializando uma instância local (Script configurado no package.json)
 
 ```bash
 - yarn dev
+```
+
+ou
+
+Gerando a build (Script configurado no package.json)
+```bash
+- yarn start
 ```
 
 ## ⤵ Testes
