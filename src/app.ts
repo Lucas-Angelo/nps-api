@@ -23,6 +23,7 @@ import createConnection from './database'
 */
 import { router } from './routes';
 import { AppError } from './errors/AppError';
+import cors from 'cors';
 
 createConnection(); // Para iniciar a conexão com o banco de dados, verificando se é test ou produção
 const app = express(); // Iniciando instância do microframework Express
@@ -31,6 +32,8 @@ const app = express(); // Iniciando instância do microframework Express
 // Insira no arquivo .env: URL=http://localhost:3333/
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+
+app.use(cors());
 
 app.use(express.json()); // Habilitar o uso de formato JSON
 app.use(router); // Funciona como Middleware para utilizar as rotas criadas
