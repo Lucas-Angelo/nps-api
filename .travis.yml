@@ -10,3 +10,4 @@ script:
 env:
   global:
   - URL_MAIL=http://localhost:3333/answers
+  - URL=http://localhost:3333/
