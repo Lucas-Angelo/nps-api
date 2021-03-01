@@ -27,8 +27,19 @@ import { AppError } from './errors/AppError';
 createConnection(); // Para iniciar a conexão com o banco de dados, verificando se é test ou produção
 const app = express(); // Iniciando instância do microframework Express
 
+// http://localhost:3333/api-docs/#/
+// Insira no arquivo .env: URL=http://localhost:3333/
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 app.use(express.json()); // Habilitar o uso de formato JSON
 app.use(router); // Funciona como Middleware para utilizar as rotas criadas
+
+// Inserindo host dinâmica no arquivo swagger.json
+swaggerDocument.host= process.env.URL;
+
+// Rota para documentação da API pelo swagger ui express
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // 
 
 app.use((err: Error, request: Request, response: Response, _next: NextFunction) => {
     // Se o erro vier do AppError

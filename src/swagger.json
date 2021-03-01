@@ -1,0 +1,316 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "NLW4 - NPS API",
+      "description": "An API for calculate surveys NPS.",
+      "version": "1.0.0"
+    },
+    "basePath": "",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/users": {
+        "post": {
+          "summary": "Create a new user.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "user",
+              "description": "The user to create.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name","email"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "A user object.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "uuid",
+                    "example": "ed813657-1acc-4732-bc15-14f80b07b0c0"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Lucas Ângelo"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "lcs2001_@hotmail.com"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "example": "2021-02-23 13:49:12"
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "A object with the error data, errors array and the data sent."
+              }
+          }
+        }
+      },
+      "/surveys": {
+        "get": {
+            "summary": "Return all the surveys.",
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "A array of objects with all the surveys.",
+                "schema": {
+                  "type": "array",
+                  "example":[ 
+                        {
+                            "id": "02b2dfc9-6b33-4b76-ac5f-e77fa5e391ad",
+                            "title": "Queremos ouvir sua opnião!",
+                            "description": "De 0 a 10, quanto você recomendaria a PucMinas?",
+                            "created_at": "2021-02-26 13:11:17"
+                        },
+                        {
+                            "id": "f1a21a6e-2a2d-457e-8a95-8d71fca66b4a",
+                            "title": "Queremos ouvir sua opnião!",
+                            "description": "De 0 a 10, quanto você recomendaria a NPS-API??",
+                            "created_at": "2021-02-24 17:27:18"
+                        }
+                  ]
+                }
+              }
+            }
+          },
+        "post": {
+          "summary": "Create a new survey.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "survey",
+              "description": "The survey to create.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title","description"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Queremos ouvir sua opnião!"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "De 0 a 10, quanto você recomendaria essa api?"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+                "description": "A User object",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "397d78a9-c2f9-41c8-a8ad-8606c79411e4"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Queremos ouvir sua opnião!"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "De 0 a 10, quanto você recomendaria a essa api?"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-02-26 14:39:25"
+                    }
+                  }
+                }
+            }
+          }
+        }
+      },
+      "/sendMail": {
+        "post": {
+          "summary": "Send a e-mail with a survey for the client.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "user",
+              "description": "A e-mail with the survey to be sended.",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email","survey_id"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "lcs2001_@hotmail.com"
+                  },
+                  "survey_id": {
+                    "type": "string",
+                    "example": "788add38-48cd-41f6-910c-93114487a314"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A userSurvey object.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                    "id": { "type":"string","example": "b09dc331-87e0-46f1-8b23-664b34f70210"},
+                    "user_id": { "type":"string","example": "11b40fa6-f08e-4ba4-af42-2bfd295cc8af"},
+                    "survey_id": { "type":"string","example": "dfa0dfb8-8e4e-466e-8772-1f394bb7e9ad"},
+                    "value": {"type":"integer", "example": "0"},
+                    "created_at": { "type":"string","example": "2021-02-28T14:59:45.000Z"},
+                    "user": {
+                      "type": "object",
+                      "example": {
+                        "id": "11b40fa6-f08e-4ba4-af42-2bfd295cc8af",
+                        "name": "Lucas Ângelo",
+                        "email": "lcs2001_@hotmail.com",
+                        "created_at": "2021-02-26T14:15:29.000Z"
+                      }
+                    },
+                    "survey": {
+                      "type": "object",
+                      "example": {
+                        "id": "dfa0dfb8-8e4e-466e-8772-1f394bb7e9ad",
+                        "title": "Queremos ouvir sua opnião!",
+                        "description": "De 0 a 10, quanto você recomendaria a Rocketseat?",
+                        "created_at": "2021-02-26T14:15:45.000Z"
+                      }
+                    }
+                }
+              }
+            },
+            "400": {
+                "description": "A object with the error message.",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "message": {"type":"string", "example":"User does not exists!"}
+                    }
+                }
+              }
+          }
+        }
+      },
+      "/answers/{value}": {
+        "get": {
+          "summary": "Return a surveyUser object with the rating value.",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "value",
+              "description": "The rating value.",
+              "type": "integer"
+            },
+            {
+                "in": "query",
+                "name": "u",
+                "description": "The userSurvey ID.",
+                "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A userSurvey object with the rating value.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {"type":"string","example": "397d78a9-c2f9-41c8-a8ad-8606c79411e4"},
+                    "user_id": {"type":"string","example": "ed813657-1acc-4732-bc15-14f80b07b0c0"},
+                    "survey_id": {"type":"string","example": "02b2dfc9-6b33-4b76-ac5f-e77fa5e391ad"},
+                    "value": {"type":"integer","example": "10"},
+                    "created_at": {"type":"string","example": "2021-02-26 14:36"}
+                }
+              }
+            },
+            "400": {
+              "description": "A object with the error message.",
+              "schema": {
+                  "type": "object",
+                  "properties": {
+                      "message": {"type":"string", "example":"User does not exists!"}
+                  }
+              }
+            }
+          }
+        }
+      },
+      "/nps/{survey_id}": {
+        "get": {
+          "summary": "Calculate the NPS of the survey.",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "survey_id",
+              "description": "The survey ID.",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A object with the NPS data.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                    "detractor": {"type": "number", "example":"1"},
+                    "promoters": {"type": "number", "example":"3"},
+                    "passive": {"type": "number", "example":"0"},
+                    "totalAnswers": {"type": "number", "example":"4"},
+                    "nps": {"type": "number", "example":"50"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

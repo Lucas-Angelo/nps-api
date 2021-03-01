@@ -32,16 +32,19 @@ Aplicação web construída na trilha <strong>NodeJS</strong> da <strong>Next Le
 
 ## ⚙️ Demo
 
-GET exemplo disponível em: https://nps-api.herokuapp.com/surveys
+GET exemplo disponível em: https://nps-api.herokuapp.com/api-docs/
 
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
-- [Express](https://expressjs.com/pt-br/)
 - [YARN](https://yarnpkg.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/pt-br/)
 - [TypeORM](https://typeorm.io/)
+- [Jest](https://jestjs.io/)
+- [NodeMailer](https://nodemailer.com/about/)
 
 ## ⤵ Comandos para começar
 
